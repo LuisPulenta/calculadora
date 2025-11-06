@@ -17,7 +17,7 @@ class CalculatorController extends GetxController {
     if (mathResult.value == '0') return mathResult.value = number;
 
     if (mathResult.value == '-0') {
-      return mathResult.value = '-' + number;
+      return mathResult.value = '-$number';
     }
 
     mathResult.value = mathResult.value + number;
@@ -27,7 +27,7 @@ class CalculatorController extends GetxController {
     if (mathResult.startsWith('-')) {
       mathResult.value = mathResult.value.replaceFirst('-', '');
     } else {
-      mathResult.value = '-' + mathResult.value;
+      mathResult.value = '-${mathResult.value}';
     }
   }
 
@@ -37,7 +37,7 @@ class CalculatorController extends GetxController {
     if (mathResult.startsWith('0')) {
       mathResult.value = '0.';
     } else {
-      mathResult.value = mathResult.value + '.';
+      mathResult.value = '${mathResult.value}.';
     }
   }
 
@@ -49,8 +49,10 @@ class CalculatorController extends GetxController {
 
   deleteLastEntry() {
     if (mathResult.value.replaceAll('-', '').length > 1) {
-      mathResult.value =
-          mathResult.value.substring(0, mathResult.value.length - 1);
+      mathResult.value = mathResult.value.substring(
+        0,
+        mathResult.value.length - 1,
+      );
     } else {
       mathResult.value = '0';
     }
@@ -80,8 +82,10 @@ class CalculatorController extends GetxController {
     }
 
     if (mathResult.value.endsWith('.0')) {
-      mathResult.value =
-          mathResult.value.substring(0, mathResult.value.length - 2);
+      mathResult.value = mathResult.value.substring(
+        0,
+        mathResult.value.length - 2,
+      );
     }
   }
 }

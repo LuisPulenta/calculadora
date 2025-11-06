@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class MainResultText extends StatelessWidget {
   final String text;
 
-  const MainResultText({Key? key, required this.text}) : super(key: key);
+  const MainResultText({super.key, required this.text});
 
   @override
   Widget build(BuildContext context) {
@@ -12,8 +12,9 @@ class MainResultText extends StatelessWidget {
       width: double.infinity,
       alignment: Alignment.centerRight,
       child: FittedBox(
-          fit: BoxFit.contain,
-          child: Text(text, style: TextStyle(fontSize: 50))),
+        fit: BoxFit.contain,
+        child: Text(text, style: TextStyle(fontSize: 50)),
+      ),
     );
   }
 }

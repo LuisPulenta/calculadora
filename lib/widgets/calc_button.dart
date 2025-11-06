@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 class CalculatorButton extends StatelessWidget {
-
   final Color bgColor;
   final bool big;
   final String text;
@@ -9,36 +8,37 @@ class CalculatorButton extends StatelessWidget {
   final Function onPressed;
 
   CalculatorButton({
-    Key? key, 
+    super.key,
     bgColor,
-    this.big = false, 
-    required this.text, 
+    this.big = false,
+    required this.text,
     required this.onPressed,
-  }): this.bgColor = bgColor ?? Color(0xff333333),
-      super(key: key);
-      
+  }) : bgColor = bgColor ?? Color(0xff333333);
 
   @override
   Widget build(BuildContext context) {
     // Button
     final buttonStyle = TextButton.styleFrom(
-        backgroundColor: this.bgColor,
-        primary: Colors.white,
-        shape: StadiumBorder(),
+      foregroundColor: Colors.white,
+      backgroundColor: bgColor,
+      shape: StadiumBorder(),
     );
 
     return Container(
-      margin: EdgeInsets.only( bottom: 10, right: 5, left: 5 ),
+      margin: EdgeInsets.only(bottom: 10, right: 5, left: 5),
       child: TextButton(
         style: buttonStyle,
-        child: Container(
-          width: this.big ? 150 : 65,
+        child: SizedBox(
+          width: big ? 150 : 60,
           height: 65,
           child: Center(
-            child: Text( this.text , style: TextStyle( fontSize: 30, fontWeight: FontWeight.w300 ),)
+            child: Text(
+              text,
+              style: TextStyle(fontSize: 30, fontWeight: FontWeight.w300),
+            ),
           ),
         ),
-        onPressed: () => this.onPressed(),
+        onPressed: () => onPressed(),
       ),
     );
   }
